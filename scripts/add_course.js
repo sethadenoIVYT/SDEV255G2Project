@@ -2,7 +2,7 @@
 addEventListener("DOMContentLoaded", function() {
     document.querySelector("#addBtn").addEventListener("click", addCourse)
 })
-
+//hello
 async function addCourse() {
     const course = {
         number: document.querySelector("#number").value,
