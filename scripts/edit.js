@@ -11,6 +11,7 @@ addEventListener("DOMContentLoaded", async function(){
         document.querySelector("#hours").value = course.hours 
     }
 })
+//test
 async function updateCourse() {
     const urlparam = new URLSearchParams(window.location.search)
     const courseID = urlparam.get('id')
