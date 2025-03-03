@@ -14,7 +14,7 @@ async function login(username, password) {
         password
     }
 
-    const response = await fetch("http://localhost:3000/api/auth/", {
+    const response = await fetch("https://lowly-cool-pony.glitch.me/api/auth/", {
         method: "POST",
         headers:{
             "Content-Type" : "application/json"
