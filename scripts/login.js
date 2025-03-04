@@ -37,7 +37,7 @@ async function login(username, password) {
         localStorage.setItem("auth", auth)
         localStorage.setItem("teacher", teacher)
 
-        window.location.replace("/index.html")
+        window.location.href = "index.html"
     }
     else {
         document.querySelector("errorMsg").innerHTML = "Bad username and Password"
