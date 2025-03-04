@@ -2,7 +2,7 @@ addEventListener("DOMContentLoaded", async function() {
     const urlparam = new URLSearchParams(window.location.search)
     const courseID = urlparam.get('id')
     console.log(courseID)
-    //test
+    //test1
 
     const response = await fetch("https://lowly-cool-pony.glitch.me/api/courses/" + courseID)
     const course = await response.json()
