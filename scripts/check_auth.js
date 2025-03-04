@@ -1,6 +1,6 @@
 function checkAuth(){
     if(localStorage.getItem("uname") === "IvyStudent"){
-        window.location.replace("/index.html")
+        window.location.href = "index.html"
     }
 }
 
