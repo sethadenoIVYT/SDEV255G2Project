@@ -1,4 +1,5 @@
 class Auth {
+    //test
     constructor() {
         document.querySelector("body").style.display = "none"
         const auth = localStorage.getItem("auth")
