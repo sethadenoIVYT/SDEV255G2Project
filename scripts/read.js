@@ -4,7 +4,7 @@ addEventListener("DOMContentLoaded", async function() {
     console.log(courseID)
     //test
 
-    const response = await fetch("https://lowly-cool-pony.glitch.me/api/courses" + courseID)
+    const response = await fetch("https://lowly-cool-pony.glitch.me/api/courses/" + courseID)
     const course = await response.json()
     console.log(course)
 
