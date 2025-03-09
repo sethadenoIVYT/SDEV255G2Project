@@ -1,6 +1,6 @@
 addEventListener("DOMContentLoaded", async function() {
     const username = localStorage.getItem("uname")
-    const response = await fetch(`http://localhost:3000/api/user?username=${username}`)
+    const response = await fetch(`https://dog-silicon-fridge.glitch.me/api/user?username=${username}`)
     const user = await response.json()
 
     console.log(user.cart.length)
