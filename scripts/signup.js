@@ -12,7 +12,7 @@ document.querySelector("#signupBtn").addEventListener("click", async function(){
 async function signup(username, password) {
     document.querySelector("#errorMsg").innerHTML = "";
  
-    const response = await fetch("http://localhost:3000/api/user", {
+    const response = await fetch("https://dog-silicon-fridge.glitch.me/api/user", {
         method: "POST",
         headers:{
             "Content-Type" : "application/json"
