@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const courseID = urlparam.get('id');
         console.log(courseID);
 
-        const response = await fetch("http://localhost:3000/api/courses/" + courseID);
+        const response = await fetch("https://dog-silicon-fridge.glitch.me/api/courses/" + courseID);
         const course = await response.json();
         console.log(course.number);
         addToCart(course.number);
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const courseID = urlparam.get('id');
         console.log(courseID);
 
-        const response = await fetch("http://localhost:3000/api/courses/" + courseID);
+        const response = await fetch("https://dog-silicon-fridge.glitch.me/api/courses/" + courseID);
         const course = await response.json();
         console.log(course.number);
         removeCart(course.number);
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 async function addToCart(number) {
     const username = localStorage.getItem("uname");
     
-    const response = await fetch("http://localhost:3000/api/cart", {
+    const response = await fetch("https://dog-silicon-fridge.glitch.me/api/cart", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -45,7 +45,7 @@ async function addToCart(number) {
 async function removeCart(number) {
     const username = localStorage.getItem("uname");
     
-    const response = await fetch("http://localhost:3000/api/user", {
+    const response = await fetch("https://dog-silicon-fridge.glitch.me/api/user", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
