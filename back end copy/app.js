@@ -21,7 +21,8 @@ router.post("/user", async(req,res) => {
         username: req.body.username,
         password: req.body.password,
         status: req.body.status,
-        teacher: req.body.teacher
+        teacher: req.body.teacher,
+        cart: req.body.cart
     })
 
     try {
@@ -39,7 +40,8 @@ router.post("/auth", async(req,res) =>{
        return
     }
     try{
-       const user = await User.findOne({username: req.body.username})
+       const user = await User.findOne({ username: req.body.username })
+       console.log(user)
        if (!user){
           res.status(401).json({error: "Bad Username"})
       
@@ -50,7 +52,7 @@ router.post("/auth", async(req,res) =>{
              teacher2 = user.teacher
              const token = jwt.encode({username: user.username}, secret)
              const auth = 1
-             res.json({username2, teacher2, token: token, auth: auth})
+             res.json({username2, teacher: teacher2, token: token, auth: auth})
           }
           else{
              res.status(401).json({error: "Bad Password"})
@@ -133,6 +135,55 @@ router.delete("/courses/:id", async(req,res) => {
         res.sendStatus(204)
     }
     catch(err) {
+        res.status(400).send(err)
+    }
+})
+
+router.post("/cart", async(req,res) => {
+    if(!req.body.username || !req.body.number){
+        res.status(401).json({error: "Missing username or course info"})
+        return
+     }
+
+    try {
+        const user = await User.findOne({ username: req.body.username })
+
+        if (user.cart.includes(req.body.number)) {
+            return res.status(400).json({ error: "Course already in the cart" });
+        }
+
+        user.cart.push(req.body.number)
+        await user.save()
+    }
+    catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.get("/user", async(req,res) => {
+    const username = req.query.username
+
+    try {
+        const user = await User.findOne({ username: username })
+        res.json(user)
+    }
+    catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.put("/user", async(req,res) => {
+    try {
+        const username = req.body.username
+        const number = req.body.number
+        const user = await User.findOne({ username: username })
+        await User.updateOne(
+            { username: username }, 
+            { $pull: { cart: number } }
+        )
+        res.sendStatus(204)
+    }
+    catch (err) {
         res.status(400).send(err)
     }
 })
