@@ -20,6 +20,6 @@ class Auth {
         localStorage.removeItem("uname")
         localStorage.removeItem("teacher")
 
-        window.location.replace("/login.html")
+        window.location.replace("login.html")
     }
 }
